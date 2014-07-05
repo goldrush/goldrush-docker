@@ -1,9 +1,11 @@
 FROM ubuntu:latest
 
+  ENV DEBIAN_FRONTEND noninteractive
   RUN apt-get update
   
-  RUN apt-get install -y --force-yes build-essential curl git
-  RUN apt-get install -y --force-yes zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev libmysqlclient-dev ruby-dev imagemagick libmagickcore-dev libmagickwand-dev subversion mysql-server mysql-client libmysqlclient-dev
+  RUN apt-get install -y --no-install-recommends build-essential curl git
+  RUN apt-get install -y --no-install-recommends zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev libmysqlclient-dev ruby-dev imagemagick libmagickcore-dev libmagickwand-dev subversion mysql-server mysql-client libmysqlclient-dev
+  RUN apt-get clean
 
   RUN git clone https://github.com/sstephenson/rbenv.git /root/.rbenv
   RUN git clone https://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
@@ -21,7 +23,7 @@ FROM ubuntu:latest
   RUN gem install bundler
   RUN gem install rmagick --no-rdoc --no-ri
   
-  RUN svn co --non-interactive --no-auth-cache --username kato-r --password kato+r https://svn.applicative.jp/svn/projects/Applicative/GoldRush/develop/sql/
+  RUN svn co --non-interactive --no-auth-cache --username  --password  https://svn.applicative.jp/svn/projects/Applicative/GoldRush/develop/sql/
   
   RUN mkdir work
   RUN cd work && git clone https://github.com/jomjomni/goldrush.git
@@ -30,7 +32,8 @@ FROM ubuntu:latest
   
   RUN /etc/init.d/mysql start && cd sql && mysql -u root < CreateDatabase.SQL && mysql -u grdev -p grdev --password=grdev < InitData.SQL && cd ~/work/goldrush && rake db:fixtures:load FIXTURES_PATH=fixtures/develop
   
-  EXPOSE 3000
+  VOLUME /work/goldrush
   
-  CMD ["/etc/init.d/mysql start", "/work/goldrush rails s"]
+  EXPOSE 3000
+ 
   
