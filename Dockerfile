@@ -17,8 +17,6 @@ FROM ubuntu:latest
   RUN rbenv global 1.9.3-p545
   RUN rbenv rehash
   
-  RUN apt-get install -y 
-  
   RUN gem install mysql2 -v '0.3.11'
   RUN gem install bundler
   RUN gem install rmagick --no-rdoc --no-ri
