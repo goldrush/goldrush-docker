@@ -27,7 +27,7 @@ install git/docker.io
     
 cloneしたDockerfileにsvnのユーザ情報とforkしたgoldrushの情報を変更する。
 
-    sudo docker.io build . -t goldrush
+    sudo docker.io build -t goldrush .
     sudo docker.io run -i -t -p 80:3000 -d goldrush /bin/bash
     sudo docker.io cp goldrush:/work/goldrush ~/work/
     sudo docker.io stop goldrush
