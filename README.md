@@ -1,14 +1,15 @@
 goldruch-docker
 ===============
 install vmware
+
 VMware player
-https://my.vmware.com/jp/web/vmware/free#desktop_end_user_computing/vmware_player/6_0
+* https://my.vmware.com/jp/web/vmware/free#desktop_end_user_computing/vmware_player/6_0
 Virtual Box
-https://www.virtualbox.org/wiki/Downloads
+* https://www.virtualbox.org/wiki/Downloads
 
 install 64bit ubuntu/xubuntu
-http://ubuntulinux.jp/News/ubuntu1404-ja-remix/
-http://mirror.anl.gov/pub/ubuntu-iso/CDs-Xubuntu/14.04/release/
+* http://ubuntulinux.jp/News/ubuntu1404-ja-remix/
+* http://mirror.anl.gov/pub/ubuntu-iso/CDs-Xubuntu/14.04/release/
 
 ===============
 
