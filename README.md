@@ -4,6 +4,7 @@ install vmware
 
 VMware player
 * https://my.vmware.com/jp/web/vmware/free#desktop_end_user_computing/vmware_player/6_0
+
 Virtual Box
 * https://www.virtualbox.org/wiki/Downloads
 
