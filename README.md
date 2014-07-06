@@ -29,8 +29,8 @@ cloneしたDockerfileにsvnのユーザ情報とforkしたgoldrushの情報を�
 
     sudo docker.io build -t goldrush .
     sudo docker.io run -i -t -p 80:3000 -d goldrush /bin/bash
-    sudo docker.io cp goldrush:/work/goldrush ~/work/
-    sudo docker.io stop goldrush
+    sudo docker.io cp (containerid):/work/goldrush ~/work/
+    sudo docker.io stop (containerid)
     sudo docker.io run -i -t -p 80:3000 -d -v /work/goldrush:~/work/:rw goldrush /bin/bash
     sudo docker.io attach goldrush
 
