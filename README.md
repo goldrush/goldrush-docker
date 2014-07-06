@@ -11,29 +11,33 @@ http://ubuntulinux.jp/News/ubuntu1404-ja-remix/
 http://mirror.anl.gov/pub/ubuntu-iso/CDs-Xubuntu/14.04/release/
 
 ===============
+
 install git/docker.io
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get install docker.io
 
-mkdir ~/work
-cd ~/work
-git clone https://github.com/jomjomni/goldrush-docker.git
-cd goldrush-docker
+    sudo apt-get update
+    sudo apt-get install git
+    sudo apt-get install docker.io
 
-docker build . -t goldrush
-docker run -i -t -p 80:3000 -d goldrush /bin/bash
-docker cp :/work/goldrush ~/work/
-docker attach goldrush
+    mkdir ~/work
+    cd ~/work
+    git clone https://github.com/jomjomni/goldrush-docker.git
+    cd goldrush-docker
 
-===============
-/etc/init.d/mysql start
-cd /work/goldrush
-rails s
+    sudo docker.io build . -t goldrush
+    sudo docker.io run -i -t -p 80:3000 -d goldrush /bin/bash
+    sudo docker.io cp :/work/goldrush ~/work/
+    sudo docker.io attach goldrush
 
 ===============
+
+    /etc/init.d/mysql start
+    cd /work/goldrush
+    rails s
+
+===============
+
 ブラウザでlocalhostにアクセスする。
 
 問題点
-・svnのログイン情報とgithubの情報が汎用的に操作できない。DockerFileに環境変数を盛り込む方法がないのかどうか。
-・Dockerにattach後mysqlを立ち上げないといけない。
+* svnのログイン情報とgithubの情報が汎用的に操作できない。DockerFileに環境変数を盛り込む方法がないのかどうか。
+* Dockerにattach後mysqlを立ち上げないといけない。
