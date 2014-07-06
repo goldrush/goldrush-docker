@@ -32,7 +32,7 @@ cloneしたDockerfileにsvnのユーザ情報とforkしたgoldrushの情報を�
     sudo docker.io cp (containerid):/work/goldrush ~/work/
     sudo docker.io stop (containerid)
     sudo docker.io run -i -t -p 80:3000 -d -v ~/work/goldrush:/work/goldrush:rw goldrush /bin/bash
-    sudo docker.io attach goldrush
+    sudo docker.io attach (containerid)
 
 ===============
 
