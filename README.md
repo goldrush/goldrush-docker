@@ -77,9 +77,10 @@ Dockerのプロセスは、「CTRL+P,CTRL+Q」を連続して押すことで抜�
 この時、バックグラウンドでDockerプロセスは動き続けます。
 
 こんな感じです。
-    $ docker ps
-    CONTAINER ID IMAGE                   COMMAND                CREATED        STATUS       NAMES
-    264415ff8e61 goldrush/grdev:latest   /bin/bash -x /work/t   38 minutes ago Up 2 minutes grdev1
+
+     $ docker ps
+     CONTAINER ID IMAGE                   COMMAND                CREATED        STATUS       NAMES
+     264415ff8e61 goldrush/grdev:latest   /bin/bash -x /work/t   38 minutes ago Up 2 minutes grdev1
 
 これは、プロセスが動いているので、railsやmysql、共有ドライブにアクセスできる状態です。
 プロンプトに復帰するには、docker attachを使います。
