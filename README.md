@@ -1,4 +1,4 @@
-goldruch-docker
+goldrush-docker
 ===============
 
 Docker container image for GoldRush development.
@@ -37,6 +37,8 @@ idコマンドで、dockerグループに加入していることを確認
 
     uid=1000(your-id) gid=1000(your-id) groups=1000(your-id),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare),126(docker)
 
+goldrush-dockerのセットアップ
+
     mkdir ~/git
     cd ~/git
     git clone https://github.com/goldrush/goldrush-docker.git
@@ -69,9 +71,21 @@ Dockerを動かしているHOSTのアドレスにアクセスします。
 
     例: mysql -u grdev -p -h 192.168.0.123 -P 13306 grdev
 
-
-    
 ## 問題点
 
 * ownerにsuしてしまっているので、root権限が必要な操作はできない。
+
+## for goldrush-docker developer
+
+Dockerfileを編集してください。
+
+    docker build -t goldrush/grdev .
+    docker push goldrush/grdev
+
+事前にDockerHubのgoldrushアカウントでログインする必要があります。
+
+開発中は自分のアカウントにpushしても良いと思います。その場合、init_grdev.shの「goldrush/grdev」となっている場所を自分のアカウントに書き換えてください。
+
+
+
 
