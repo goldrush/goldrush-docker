@@ -14,5 +14,8 @@ cp /work/goldrush/config/database.yml{.org,}
 cd /work/goldrush
 bundle install
 su owner -c "rake db:fixtures:load FIXTURES_PATH=fixtures/develop"
+else
+service mysql start
+service samba start
 fi
 su owner

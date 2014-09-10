@@ -71,6 +71,40 @@ Dockerを動かしているHOSTのアドレスにアクセスします。
 
     例: mysql -u grdev -p -h 192.168.0.123 -P 13306 grdev
 
+## その他使い方
+
+Dockerのプロセスは、「CTRL+P,CTRL+Q」を連続して押すことで抜けることができます(detach)。
+この時、バックグラウンドでDockerプロセスは動き続けます。
+
+こんな感じです。
+    $ docker ps
+    CONTAINER ID IMAGE                   COMMAND                CREATED        STATUS       NAMES
+    264415ff8e61 goldrush/grdev:latest   /bin/bash -x /work/t   38 minutes ago Up 2 minutes grdev1
+
+これは、プロセスが動いているので、railsやmysql、共有ドライブにアクセスできる状態です。
+プロンプトに復帰するには、docker attachを使います。
+
+    $ docker attach 26
+
+26はCONTAINER IDです。重複がなければ、全て入力しなくとも動きます。
+
+プロンプトを、CTRL+Dもしくは、exitで抜けた場合、docker containerは停止します。この際に起動していたプロセスもすべて強制終了するので気をつけてください。
+復帰するには、docker startを使います。
+
+    $ docker start -i 26
+
+-iオプションによって、プロンプトに復帰することができます。
+
+## goldrush-docker再初期化の注意
+
+goldrush-dockerは、init_grdev.shを叩くことでいつでも初期化できます。但し、注意点があります。
+
+1. 古いdocker containerは、削除すること
+  1. 「docker rm [CONTAINER ID]」で削除できます。起動中のcontainerの場合は、最初に「docker stop [CONTAINER ID]」で停止してから削除してください。
+1. mysqlディレクトリを削除すること
+  1. goldrush-dockerの直下にできているmysqlディレクトリは、初期化するために邪魔なので削除します。「rm -rf mysql」で削除できます。
+
+
 ## 問題点
 
 * ownerにsuしてしまっているので、root権限が必要な操作はできない。
