@@ -13,6 +13,6 @@ mysql -u root < CreateDatabase.SQL && mysql -u grdev -p grdev --password=grdev <
 cp /work/goldrush/config/database.yml{.org,}
 cd /work/goldrush
 bundle install
-rake db:fixtures:load FIXTURES_PATH=fixtures/develop
+su owner -c "rake db:fixtures:load FIXTURES_PATH=fixtures/develop"
 fi
-/bin/bash
+su owner
