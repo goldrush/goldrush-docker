@@ -33,6 +33,6 @@ docker run -it -d --name grdev1 goldrush/grdev /bin/bash
 docker stop grdev1
 docker cp grdev1:/var/lib/mysql .
 docker rm grdev1
-docker run -it -d --name grdev1 -e OWNER_UID=`id -u` -e OWNER_GID=`id -g`  -v `pwd`/mysql:/var/lib/mysql -v `pwd`/goldrush:/work/goldrush -v `pwd`/sql:/work/sql -p 13000:3000 -p 13306:3306 goldrush/grdev /bin/bash -x /init.sh
+docker run -it -d --name grdev1 -e OWNER_UID=`id -u` -e OWNER_GID=`id -g`  -v `pwd`/tools:/work/tools -v `pwd`/mysql:/var/lib/mysql -v `pwd`/goldrush:/work/goldrush -v `pwd`/sql:/work/sql -p 139:139 -p 13000:3000 -p 13306:3306 goldrush/grdev /bin/bash -x /work/tools/init.sh
 docker attach grdev1
 
