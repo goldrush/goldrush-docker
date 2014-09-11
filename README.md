@@ -71,6 +71,11 @@ Dockerを動かしているHOSTのアドレスにアクセスします。
 
     例: mysql -u grdev -p -h 192.168.0.123 -P 13306 grdev
 
+
+## rootでの作業
+
+ふつうにsudoできます。ownerのpasswordは、ownerです。
+
 ## その他使い方
 
 Dockerのプロセスは、「CTRL+P,CTRL+Q」を連続して押すことで抜けることができます(detach)。
@@ -105,10 +110,6 @@ goldrush-dockerは、init_grdev.shを叩くことでいつでも初期化でき�
 1. mysqlディレクトリを削除すること
   1. goldrush-dockerの直下にできているmysqlディレクトリは、初期化するために邪魔なので削除します。「rm -rf mysql」で削除できます。
 
-
-## 問題点
-
-* ownerにsuしてしまっているので、root権限が必要な操作はできない。
 
 ## for goldrush-docker developer
 
